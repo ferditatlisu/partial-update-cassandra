@@ -13,5 +13,5 @@ path : ./src/main/resources/DbQuery.txt
 After installing Cassandra you can execute these queries.
 
 
-### Run
+### START
 Just starting the application and test with Swagger
