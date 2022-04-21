@@ -1,0 +1,25 @@
+version: '3.3'
+services:
+  cassandra-1:
+    image: cassandra:4.0
+    ports:
+      - 7199
+      - 9042:9042
+    environment:
+      CASSANDRA_CLUSTER_NAME: test-cluster
+    networks:
+      - connector
+  cassandra-2:
+    image: cassandra:4.0
+    ports:
+      - 7199
+      - 9042
+    environment:
+      CASSANDRA_CLUSTER_NAME: test-cluster
+      CASSANDRA_SEEDS: cassandra-1
+    networks:
+      - connector
+
+networks:
+  connector:
+    driver: bridge

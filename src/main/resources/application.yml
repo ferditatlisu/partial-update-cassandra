@@ -1,0 +1,9 @@
+hello:
+  message: "Search Api - Dev"
+
+springdoc:
+  swagger-ui:
+    path: /
+
+server:
+  port: 8080

@@ -1,0 +1,25 @@
+-- create KEYSPACE:
+create keyspace ticket with replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
+
+-- create user (UDT)
+create TYPE ticket.user(id UUID, firstname text, lastname text, email text);
+
+-- create flow (UDT)
+create TYPE ticket.flow(id UUID, name text);
+
+-- create ticket (TABLE)
+create table ticket.tickets
+(
+	id UUID primary key,
+	title text,
+	priority text,
+	flow flow,
+	modifiedby user,
+	modifieddate timestamp
+);
+
+-- create a ticket (ROW):
+INSERT INTO ticket.tickets (id, flow, modifiedby, modifieddate, priority, title)
+VALUES (22bbb1e9-b21f-4be3-ab61-0325479b449b, {id:95cbf643-426c-4ce7-8f3b-169850c37279,name:'name'},
+{id:95cbf643-426c-4ce7-8f3b-169850c37279,firstname:'firstName',lastname:'lastName',email:'email@email.com'}, '2022-04-21 08:43:42.375', 'CRITICAL_URGENT',
+'Transfer Delivery');
